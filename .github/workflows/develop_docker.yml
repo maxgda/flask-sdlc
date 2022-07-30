@@ -1,0 +1,21 @@
+name: Build and test Docker image develop
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Test Docker image
+      run: docker build - t flask-docker --target test .
+      
+    - name: Build Docker image
+      run: docker build - t flask-docker --target development .
