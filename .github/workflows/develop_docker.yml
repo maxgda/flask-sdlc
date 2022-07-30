@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: Test Docker image
-      run: docker build - t flask-docker --target test .
+      run: docker build -t flask-docker --target test .
       
     - name: Build Docker image
-      run: docker build - t flask-docker --target development .
+      run: docker build -t flask-docker --target development .
