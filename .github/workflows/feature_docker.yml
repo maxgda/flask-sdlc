@@ -2,9 +2,7 @@ name: Build and test Docker image develop
 
 on:
   push:
-    branches: [ "develop" ]
-  pull_request:
-    branches: [ "develop" ]
+    branches: [ "feature/**" ]
 
 jobs:
   build:
@@ -16,6 +14,3 @@ jobs:
     
     - name: Test Docker image
       run: docker build -t flask-docker --target test .
-      
-    - name: Build Docker image
-      run: docker build -t flask-docker --target development .
