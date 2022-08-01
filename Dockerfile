@@ -35,7 +35,7 @@ FROM base as production
 
 COPY requirements/prod.txt ./requirements/prod.txt
 
-RUN pip3 install -r requirements/dev.txt
+RUN pip3 install -r requirements/prod.txt
 
 # flask startup command
 CMD ["flask", "run", "--host=0.0.0.0"]
