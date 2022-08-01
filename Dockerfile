@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.9-slim-buster as base
+FROM python:3.9-alpine as base
 
 WORKDIR /app
 
@@ -25,6 +25,15 @@ RUN ["pytest"]
 FROM base as development
 
 COPY requirements/dev.txt ./requirements/dev.txt
+
+RUN pip3 install -r requirements/dev.txt
+
+# flask startup command
+CMD ["flask", "run", "--host=0.0.0.0"]
+
+FROM base as production
+
+COPY requirements/prod.txt ./requirements/prod.txt
 
 RUN pip3 install -r requirements/dev.txt
 
