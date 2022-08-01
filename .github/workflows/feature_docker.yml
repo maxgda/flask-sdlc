@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    name: Test image
 
     runs-on: ubuntu-latest
 
@@ -20,6 +21,6 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: false
-        tags: marvkosmai/flask-docker:test
+        tags: flask-docker:test
         target: test
         platforms: linux/arm/v6
