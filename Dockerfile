@@ -16,7 +16,7 @@ COPY requirements/test.txt ./requirements/test.txt
 # only needed in test image
 COPY tests ./tests
 
-RUN pip3 install -r requirements/test.txt
+RUN ["pip3", "install", "-r", "requirements/test.txt"]
 
 # run tests
 RUN ["flake8", "flaskr/"]
