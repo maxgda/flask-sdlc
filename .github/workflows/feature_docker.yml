@@ -20,6 +20,6 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: false
-        tags: marvkosmai/flask-docker:latest
+        tags: marvkosmai/flask-docker:test
         target: test
         platforms: linux/arm/v6

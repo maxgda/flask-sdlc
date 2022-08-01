@@ -34,6 +34,6 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: marvkosmai/flask-docker:prod
+        tags: marvkosmai/flask-docker:latest
         target: production
         platforms: linux/arm/v6
