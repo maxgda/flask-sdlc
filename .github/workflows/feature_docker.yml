@@ -27,7 +27,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Test Docker image
-        id: docker_build
+        id: docker_build_test
         uses: docker/build-push-action@v3
         with:
           builder: ${{ steps.buildx.outputs.name }}
