@@ -21,6 +21,7 @@ FROM base as test
 
 COPY requirements/test.txt ./requirements/test.txt
 # only needed in test image
+COPY pytest.ini ./pytest.ini
 COPY tests ./tests
 
 RUN pip3 install -r requirements/test.txt
