@@ -31,8 +31,10 @@ RUN ["flake8", "flaskr/"]
 RUN ["flake8", "tests/"]
 # run pytest as module will also add the current directory to sys.path
 # run unit tests first, then integration tests
-RUN ["python", "-m", "pytest", "-m", "unit"]
-RUN ["python", "-m", "pytest", "-m", "integration"]
+# RUN ["python", "-m", "pytest", "-m", "unit"]
+RUN ["coverage", "run", "-m", "pytest", "-m", "unit"]
+RUN ["coverage", "run", "-m", "pytest", "-m", "integration"]
+RUN ["coverage", "report", "--fail-under", "80"]
 
 FROM base as development
 
