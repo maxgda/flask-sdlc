@@ -27,7 +27,7 @@ RUN pip3 install -r requirements/test.txt
 
 # run tests
 RUN ["flake8", "flaskr/"]
-RUN ["pytest"]
+RUN ["python", "-m", "pytest"]
 
 FROM base as development
 
