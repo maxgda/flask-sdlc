@@ -12,4 +12,4 @@ def test_ping():
 @pytest.mark.integration
 def test_ping_call(client):
     response = client.get('/ping')
-    assert b"ping" in response.data
+    assert b'ping' == response.data
