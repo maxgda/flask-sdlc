@@ -18,4 +18,4 @@ def test_temp(mocker, client):
     mock_cpu.return_value.temperature = 40.0
 
     response = client.get('/cpu/temp')
-    assert b'40.0' in response.data
+    assert b'40.0' == response.data
