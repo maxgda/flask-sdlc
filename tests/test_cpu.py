@@ -5,13 +5,17 @@ from flaskr.cpu import temp
 
 @pytest.mark.unit
 def test_temp(mocker):
-    def mock_temperature(self):
-        return 40.0
-
-    mocker.patch(
-        'gpiozero.CPUTemperature.temperature',
-        mock_temperature
-    )
+    mock_cpu = mocker.patch('flaskr.cpu.CPUTemperature')
+    mock_cpu.return_value.temperature = 40.0
 
     temperature = temp()
-    assert 40.0 == temperature
+    assert '40.0' == temperature
+
+
+@pytest.mark.integration
+def test_temp(mocker, client):
+    mock_cpu = mocker.patch('flaskr.cpu.CPUTemperature')
+    mock_cpu.return_value.temperature = 40.0
+
+    response = client.get('/cpu/temp')
+    assert b'40.0' in response.data
