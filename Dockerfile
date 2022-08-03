@@ -27,6 +27,8 @@ RUN pip3 install -r requirements/test.txt
 
 # run tests
 RUN ["flake8", "flaskr/"]
+RUN ["flake8", "tests/"]
+# run pytest as module will also add the current directory to sys.path
 RUN ["python", "-m", "pytest"]
 
 FROM base as development
