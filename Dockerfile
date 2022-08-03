@@ -21,13 +21,18 @@ FROM base as test
 
 COPY requirements/test.txt ./requirements/test.txt
 # only needed in test image
+COPY pytest.ini ./pytest.ini
 COPY tests ./tests
 
 RUN pip3 install -r requirements/test.txt
 
 # run tests
 RUN ["flake8", "flaskr/"]
-RUN ["pytest"]
+RUN ["flake8", "tests/"]
+# run pytest as module will also add the current directory to sys.path
+# run unit tests first, then integration tests
+RUN ["python", "-m", "pytest", "-m", "unit"]
+RUN ["python", "-m", "pytest", "-m", "integration"]
 
 FROM base as development
 
