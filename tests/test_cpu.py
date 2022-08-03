@@ -13,7 +13,7 @@ def test_temp(mocker):
 
 
 @pytest.mark.integration
-def test_temp(mocker, client):
+def test_temp_call(mocker, client):
     mock_cpu = mocker.patch('flaskr.cpu.CPUTemperature')
     mock_cpu.return_value.temperature = 40.0
 
