@@ -12,3 +12,18 @@ def temp():
     """
     cpu = CPUTemperature()
     return str(cpu.temperature)
+
+
+@bp.route('/temp/error', methods=['GET'])
+def temp_error():
+    """
+    Returns error message depending on CPU temperature.
+    <= 60 degree Celsius -> "fine"
+    >  60 degree Celsius -> "too hot"
+    """
+    cpu = CPUTemperature()
+
+    if cpu.temperature > 60.0:
+        return 'too hot'
+
+    return 'fine'
