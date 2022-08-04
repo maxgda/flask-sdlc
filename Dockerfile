@@ -2,7 +2,7 @@
 
 FROM arm32v6/python:3.9-alpine as base
 
-# gcc needed for python GPIO libraray
+# gcc needed for python GPIO library
 RUN apk update
 RUN apk add python3-dev \
             gcc \
