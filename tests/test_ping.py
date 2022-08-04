@@ -1,6 +1,6 @@
 import pytest
 
-from flaskr.ping import ping
+from flaskr.views.ping import ping
 
 
 @pytest.mark.unit

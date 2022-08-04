@@ -1,3 +1,5 @@
 Flask==2.2.0
+# RPi.GPIO needed for gpiozero inside Docker image on a Raspberry Pi
+# you can still run tests locally, even if this is not installed locally
 RPi.GPIO==0.7.1
 gpiozero==1.6.2
