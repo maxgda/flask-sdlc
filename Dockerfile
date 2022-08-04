@@ -2,7 +2,7 @@
 
 FROM arm32v6/python:3.9-alpine as base
 
-# gcc needed for python GPIO libraray
+# gcc needed for python GPIO library
 RUN apk update
 RUN apk add python3-dev \
             gcc \
@@ -21,13 +21,20 @@ FROM base as test
 
 COPY requirements/test.txt ./requirements/test.txt
 # only needed in test image
+COPY pytest.ini ./pytest.ini
+COPY .coveragerc ./.coveragerc
 COPY tests ./tests
 
 RUN pip3 install -r requirements/test.txt
 
-# run tests
+# run linting
 RUN ["flake8", "flaskr/"]
-RUN ["pytest"]
+RUN ["flake8", "tests/"]
+# run unit tests first, then integration tests
+RUN ["coverage", "run", "-m", "pytest", "-m", "unit"]
+RUN ["coverage", "run", "-m", "pytest", "-m", "integration"]
+# of test covergae is under 80% the build will fail
+RUN ["coverage", "report", "--fail-under", "80"]
 
 FROM base as development
 
