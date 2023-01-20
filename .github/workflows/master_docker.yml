@@ -1,10 +1,10 @@
-name: Build and test Docker image develop
+name: Build and test Docker image main
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 jobs:
   build:

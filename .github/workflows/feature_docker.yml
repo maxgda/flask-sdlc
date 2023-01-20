@@ -1,4 +1,4 @@
-name: Build and test Docker image develop
+name: Build and test Docker image feature
 
 on:
   push:
